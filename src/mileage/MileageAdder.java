@@ -6,12 +6,15 @@ package mileage;
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class MileageAdder {
     
     private String fromDay, toDay;
     private final String fromMonth, fromYear, toMonth, toYear;
     private double daysInRange = -1, totalMiles = -1;
+    private final Pattern datePattern = Pattern.compile("\\d\\d:");
+    private final Pattern monthPattern = Pattern.compile("\\D\\D\\D");
     
     MileageAdder(String fd, String fm, String fy,
             String td, String tm, String ty) {
@@ -104,17 +107,16 @@ public class MileageAdder {
                     }
                     
                     // look for instances like "XXX XX:" i.e. "Mar 09:"
-                    // to increment days... must do this better with REGEX matching
+                    // to increment days
                     if (enteredDateRange &&
-                            (thisToken.length() == 3 &&
-                            thisToken.endsWith(":") &&
-                            previousToken.length() == 3)) {
+                            (datePattern.matcher(thisToken).matches() &&
+                            monthPattern.matcher(previousToken).matches())) {
                         if (reachedFinalDayInRange) {
                             // upon reaching the day after the final day, scanner can
                             // stop... if the final day is the last day of a year, it will stop
                             // without reaching this statement because the for-loop will be at 
                             // the end of the yearsInRange array...
-                            // must skip this step exactly 1 time to capture miles on final day...
+                            // must skip this step exactly 1 time to capture miles on final day
                             if (passedFinalDay) {
                                 return; // go the the finally block
                             }
