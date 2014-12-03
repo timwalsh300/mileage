@@ -14,7 +14,9 @@ public class MileageAdder {
     private final String fromMonth, fromYear, toMonth, toYear;
     private double daysInRange = -1, totalMiles = -1;
     private final Pattern datePattern = Pattern.compile("\\d\\d:");
-    private final Pattern monthPattern = Pattern.compile("\\D\\D\\D");
+    private final Pattern monthInitialCheck = Pattern.compile("\\D\\D\\D");
+    private Pattern previousTokenPattern;
+    private final String monthStringSequence = "JanFebMarAprMayJunJulAugSepOctNovDec";
     
     MileageAdder(String fd, String fm, String fy,
             String td, String tm, String ty) {
@@ -106,11 +108,15 @@ public class MileageAdder {
                         reachedFinalDayInRange = true;
                     }
                     
-                    // look for instances like "XXX XX:" i.e. "Mar 09:"
-                    // to increment days
-                    if (enteredDateRange &&
-                            (datePattern.matcher(thisToken).matches() &&
-                            monthPattern.matcher(previousToken).matches())) {
+                    // look for instances like "Mar 09:" to increment days
+                    boolean lookingAtDate = false;
+                    if (datePattern.matcher(thisToken).matches() && 
+                            monthInitialCheck.matcher(previousToken).matches()) {
+                        previousTokenPattern = Pattern.compile(previousToken);
+                        lookingAtDate = previousTokenPattern.matcher(monthStringSequence).find();
+                    }
+                    
+                    if (enteredDateRange && lookingAtDate){
                         if (reachedFinalDayInRange) {
                             // upon reaching the day after the final day, scanner can
                             // stop... if the final day is the last day of a year, it will stop
