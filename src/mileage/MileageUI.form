@@ -9,9 +9,6 @@
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[530, 230]"/>
         </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[530, 230]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
 
@@ -112,9 +109,16 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
+                          <Component id="LogBuilderFrameLabel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="YearToBuildField" min="-2" pref="60" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="LogBuilderCompleteNotification" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="LogBuilderFrameLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="FileNameField" min="-2" pref="174" max="-2" attributes="0"/>
@@ -122,26 +126,13 @@
                           <Component id="LogBuilderFrameLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
-                          <Component id="LogBuilderFrameLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="DayOfTheWeekChooser" min="-2" pref="98" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="LogBuilderBuildButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="LeapYearCheck" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
-                          <Component id="LogBuilderCompleteNotification" min="-2" max="-2" attributes="0"/>
+                          <Component id="LogBuilderCloseButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="103" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="LogBuilderBuildButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="LogBuilderCloseButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -159,24 +150,18 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Component id="LogBuilderFrameLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="DayOfTheWeekChooser" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LeapYearCheck" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="LogBuilderFrameLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="YearToBuildField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LogBuilderCompleteNotification" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="LogBuilderBuildButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="LogBuilderCloseButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="LogBuilderCompleteNotification" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,33 +179,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="LogBuilderFrameLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="First day of the year is a"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="DayOfTheWeekChooser">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
-                <StringItem index="0" value="Sunday"/>
-                <StringItem index="1" value="Monday"/>
-                <StringItem index="2" value="Tuesday"/>
-                <StringItem index="3" value="Wednesday"/>
-                <StringItem index="4" value="Thursday"/>
-                <StringItem index="5" value="Friday"/>
-                <StringItem index="6" value="Saturday"/>
-              </StringArray>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Year to build:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="LogBuilderFrameLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value=".txt"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="LeapYearCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Leap year?"/>
-            <Property name="horizontalTextPosition" type="int" value="10"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="LogBuilderBuildButton">
@@ -249,18 +213,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogBuilderCloseButtonActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JTextField" name="YearToBuildField">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="YearToBuildFieldKeyPressed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="OverwritePopup">
       <Properties>
         <Property name="locationByPlatform" type="boolean" value="true"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[230, 150]"/>
-        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[230, 150]"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[230, 150]"/>
         </Property>
       </Properties>

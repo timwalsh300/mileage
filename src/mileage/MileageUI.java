@@ -16,8 +16,8 @@ public class MileageUI extends javax.swing.JFrame {
     public static Path workingDirectory;
     private double avgWeeklyMileage;
     private final WeeklyMileagePanel weeklyPanel;
-    private boolean mustDeleteFile, leapYear;
-    private String filename, firstDayOfTheWeekString;
+    private boolean mustDeleteFile;
+    private String filename, yearToBuildString;
     private Path newFile;
     
     public MileageUI() {
@@ -47,12 +47,11 @@ public class MileageUI extends javax.swing.JFrame {
         LogBuilderFrameLabel1 = new javax.swing.JLabel();
         FileNameField = new javax.swing.JTextField();
         LogBuilderFrameLabel3 = new javax.swing.JLabel();
-        DayOfTheWeekChooser = new javax.swing.JComboBox();
         LogBuilderFrameLabel2 = new javax.swing.JLabel();
-        LeapYearCheck = new javax.swing.JCheckBox();
         LogBuilderBuildButton = new javax.swing.JButton();
         LogBuilderCompleteNotification = new javax.swing.JLabel();
         LogBuilderCloseButton = new javax.swing.JButton();
+        YearToBuildField = new javax.swing.JTextField();
         OverwritePopup = new javax.swing.JDialog();
         OverwritePopupLabel1 = new javax.swing.JLabel();
         OverwritePopupLabel2 = new javax.swing.JLabel();
@@ -77,7 +76,6 @@ public class MileageUI extends javax.swing.JFrame {
         WorkingDirectoryFrame.setAlwaysOnTop(true);
         WorkingDirectoryFrame.setLocationByPlatform(true);
         WorkingDirectoryFrame.setMinimumSize(new java.awt.Dimension(530, 230));
-        WorkingDirectoryFrame.setPreferredSize(new java.awt.Dimension(530, 230));
         WorkingDirectoryFrame.setResizable(false);
 
         WorkingDirectoryFrameLabel1.setText("Working directory is shown below:");
@@ -150,14 +148,9 @@ public class MileageUI extends javax.swing.JFrame {
             }
         });
 
-        LogBuilderFrameLabel3.setText("First day of the year is a");
-
-        DayOfTheWeekChooser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
+        LogBuilderFrameLabel3.setText("Year to build:");
 
         LogBuilderFrameLabel2.setText(".txt");
-
-        LeapYearCheck.setText("Leap year?");
-        LeapYearCheck.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
 
         LogBuilderBuildButton.setText("Build");
         LogBuilderBuildButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -178,36 +171,37 @@ public class MileageUI extends javax.swing.JFrame {
             }
         });
 
+        YearToBuildField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                YearToBuildFieldKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LogBuilderFrameLayout = new javax.swing.GroupLayout(LogBuilderFrame.getContentPane());
         LogBuilderFrame.getContentPane().setLayout(LogBuilderFrameLayout);
         LogBuilderFrameLayout.setHorizontalGroup(
             LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogBuilderFrameLayout.createSequentialGroup()
-                .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LogBuilderFrameLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                .addGap(42, 42, 42)
+                .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
+                        .addComponent(LogBuilderFrameLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(YearToBuildField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LogBuilderCompleteNotification))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
                         .addComponent(LogBuilderFrameLabel1)
                         .addGap(10, 10, 10)
                         .addComponent(FileNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(LogBuilderFrameLabel2))
-                    .addGroup(LogBuilderFrameLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(LogBuilderFrameLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DayOfTheWeekChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(LogBuilderBuildButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LeapYearCheck))
-                    .addGroup(LogBuilderFrameLayout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(LogBuilderCompleteNotification)))
-                .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogBuilderFrameLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LogBuilderBuildButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LogBuilderCloseButton)
-                .addGap(22, 22, 22))
+                        .addComponent(LogBuilderCloseButton)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         LogBuilderFrameLayout.setVerticalGroup(
             LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,26 +214,20 @@ public class MileageUI extends javax.swing.JFrame {
                         .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LogBuilderFrameLabel1)
                             .addComponent(LogBuilderFrameLabel2))))
-                .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LogBuilderFrameLayout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(LogBuilderFrameLabel3))
-                    .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(DayOfTheWeekChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LeapYearCheck)))
+                .addGap(11, 11, 11)
+                .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LogBuilderFrameLabel3)
+                    .addComponent(YearToBuildField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LogBuilderCompleteNotification))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LogBuilderBuildButton)
                     .addComponent(LogBuilderCloseButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LogBuilderCompleteNotification)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         OverwritePopup.setLocationByPlatform(true);
-        OverwritePopup.setMaximumSize(new java.awt.Dimension(230, 150));
         OverwritePopup.setMinimumSize(new java.awt.Dimension(230, 150));
-        OverwritePopup.setPreferredSize(new java.awt.Dimension(230, 150));
 
         OverwritePopupLabel1.setText("A file with this name already exists.");
 
@@ -496,27 +484,25 @@ public class MileageUI extends javax.swing.JFrame {
     }//GEN-LAST:event_WorkingDirectoryFrameSetButtonActionPerformed
 
     private void FileNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FileNameFieldKeyPressed
-        // TODO add your handling code here:
+
         LogBuilderCompleteNotification.setVisible(false);
     }//GEN-LAST:event_FileNameFieldKeyPressed
 
     private void LogBuilderBuildButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderBuildButtonActionPerformed
 
         //check that filename field contains something
-        if (!FileNameField.getText().isEmpty()) {
+        if (!FileNameField.getText().isEmpty() && !YearToBuildField.getText().isEmpty()) {
             //capture selections/text from other fields in the GUI
             filename = FileNameField.getText() + ".txt";
-            firstDayOfTheWeekString = DayOfTheWeekChooser.getSelectedItem().toString();
-            leapYear = LeapYearCheck.isSelected();
+            yearToBuildString = YearToBuildField.getText();
 
             //check if filename exists, and prompt for overwrite if it does
-            newFile = Paths.get(filename);
+            newFile = Paths.get(workingDirectory.toString() + File.separator + filename);
             if (Files.exists(newFile))
             {
                 // pop-up box to notify and ask for overwrite permission
                 FileNameField.setEnabled(false);
-                DayOfTheWeekChooser.setEnabled(false);
-                LeapYearCheck.setEnabled(false);
+                YearToBuildField.setEnabled(false);
                 LogBuilderBuildButton.setEnabled(false);
                 OverwritePopup.setVisible(true);
                 //exit this method to wait for next action from pop-up box
@@ -536,14 +522,14 @@ public class MileageUI extends javax.swing.JFrame {
     private void LogBuilderCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderCloseButtonActionPerformed
         LogBuilderFrame.setVisible(false);
         FileNameField.setText(null);
+        YearToBuildField.setText(null);
     }//GEN-LAST:event_LogBuilderCloseButtonActionPerformed
 
     private void OverwriteYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverwriteYesActionPerformed
         mustDeleteFile = true;
         OverwritePopup.setVisible(false);
         FileNameField.setEnabled(true);
-        DayOfTheWeekChooser.setEnabled(true);
-        LeapYearCheck.setEnabled(true);
+        YearToBuildField.setEnabled(true);
         LogBuilderBuildButton.setEnabled(true);
         instantiateAndBuild();
         mustDeleteFile = false; //set the flag back to the default "false" for the next time
@@ -552,10 +538,13 @@ public class MileageUI extends javax.swing.JFrame {
     private void OverwriteNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverwriteNoActionPerformed
         OverwritePopup.setVisible(false);
         FileNameField.setEnabled(true);
-        DayOfTheWeekChooser.setEnabled(true);
-        LeapYearCheck.setEnabled(true);
+        YearToBuildField.setEnabled(true);
         LogBuilderBuildButton.setEnabled(true);
     }//GEN-LAST:event_OverwriteNoActionPerformed
+
+    private void YearToBuildFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YearToBuildFieldKeyPressed
+        LogBuilderCompleteNotification.setVisible(false);
+    }//GEN-LAST:event_YearToBuildFieldKeyPressed
 
     private void updateDisplay() {
         if (FromMonthComboBox.getSelectedItem() != null && ToMonthComboBox.getSelectedItem() != null
@@ -592,7 +581,7 @@ public class MileageUI extends javax.swing.JFrame {
     
     private void instantiateAndBuild() {
         //pass inputs to LogBuilder constructor
-        LogBuilder tempBuilder = new LogBuilder(newFile, firstDayOfTheWeekString, leapYear, mustDeleteFile);
+        LogBuilder tempBuilder = new LogBuilder(newFile, yearToBuildString, mustDeleteFile);
         
         //execute the logic to build the file
         tempBuilder.buildIt();
@@ -660,14 +649,12 @@ public class MileageUI extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox DayOfTheWeekChooser;
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JTextField FileNameField;
     private javax.swing.JComboBox FromDayComboBox;
     private javax.swing.JLabel FromLabel;
     private javax.swing.JComboBox FromMonthComboBox;
     private javax.swing.JComboBox FromYearComboBox;
-    private javax.swing.JCheckBox LeapYearCheck;
     private javax.swing.JButton LogBuilderBuildButton;
     private javax.swing.JButton LogBuilderCloseButton;
     private javax.swing.JLabel LogBuilderCompleteNotification;
@@ -696,5 +683,6 @@ public class MileageUI extends javax.swing.JFrame {
     private javax.swing.JButton WorkingDirectoryFrameSetButton;
     private javax.swing.JMenuItem WorkingDirectoryMenuItem;
     private javax.swing.JTextField WorkingDirectoryTextField;
+    private javax.swing.JTextField YearToBuildField;
     // End of variables declaration//GEN-END:variables
 }
