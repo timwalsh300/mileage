@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
+import javax.swing.JOptionPane;
 
 public class MileageUI extends javax.swing.JFrame {
 
@@ -37,26 +38,16 @@ public class MileageUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WorkingDirectoryFrame = new javax.swing.JFrame();
-        WorkingDirectoryFrameLabel1 = new javax.swing.JLabel();
-        WorkingDirectoryFrameLabel2 = new javax.swing.JLabel();
-        WorkingDirectoryFrameCancelButton = new javax.swing.JButton();
-        WorkingDirectoryFrameSetButton = new javax.swing.JButton();
-        WorkingDirectoryTextField = new javax.swing.JTextField();
+        WorkingDirectoryChooser = new javax.swing.JFileChooser();
         LogBuilderFrame = new javax.swing.JFrame();
-        LogBuilderFrameLabel1 = new javax.swing.JLabel();
-        FileNameField = new javax.swing.JTextField();
-        LogBuilderFrameLabel3 = new javax.swing.JLabel();
-        LogBuilderFrameLabel2 = new javax.swing.JLabel();
+        LogBuilderTxtLabel = new javax.swing.JLabel();
         LogBuilderBuildButton = new javax.swing.JButton();
         LogBuilderCompleteNotification = new javax.swing.JLabel();
         LogBuilderCloseButton = new javax.swing.JButton();
-        YearToBuildField = new javax.swing.JTextField();
-        OverwritePopup = new javax.swing.JDialog();
-        OverwritePopupLabel1 = new javax.swing.JLabel();
-        OverwritePopupLabel2 = new javax.swing.JLabel();
-        OverwriteYes = new javax.swing.JButton();
-        OverwriteNo = new javax.swing.JButton();
+        LogBuilderYearField = new javax.swing.JTextField();
+        LogBuilderNameLabel = new javax.swing.JLabel();
+        LogBuilderNameField = new javax.swing.JTextField();
+        LogBuilderYearLabel = new javax.swing.JLabel();
         FromLabel = new javax.swing.JLabel();
         ToLabel = new javax.swing.JLabel();
         TotalMileageOutputText = new javax.swing.JTextField();
@@ -73,84 +64,15 @@ public class MileageUI extends javax.swing.JFrame {
         LogBuilderMenuItem = new javax.swing.JMenuItem();
         ExitMenuItem = new javax.swing.JMenuItem();
 
-        WorkingDirectoryFrame.setAlwaysOnTop(true);
-        WorkingDirectoryFrame.setLocationByPlatform(true);
-        WorkingDirectoryFrame.setMinimumSize(new java.awt.Dimension(530, 230));
-        WorkingDirectoryFrame.setResizable(false);
-
-        WorkingDirectoryFrameLabel1.setText("Working directory is shown below:");
-
-        WorkingDirectoryFrameLabel2.setText("This is where the program will look for log files to scan, and place newly created log files.");
-
-        WorkingDirectoryFrameCancelButton.setText("Cancel");
-        WorkingDirectoryFrameCancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorkingDirectoryFrameCancelButtonActionPerformed(evt);
-            }
-        });
-
-        WorkingDirectoryFrameSetButton.setText("Set directory");
-        WorkingDirectoryFrameSetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorkingDirectoryFrameSetButtonActionPerformed(evt);
-            }
-        });
-
-        WorkingDirectoryTextField.setText("jTextField1");
-
-        javax.swing.GroupLayout WorkingDirectoryFrameLayout = new javax.swing.GroupLayout(WorkingDirectoryFrame.getContentPane());
-        WorkingDirectoryFrame.getContentPane().setLayout(WorkingDirectoryFrameLayout);
-        WorkingDirectoryFrameLayout.setHorizontalGroup(
-            WorkingDirectoryFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WorkingDirectoryFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(WorkingDirectoryFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WorkingDirectoryFrameLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(WorkingDirectoryFrameLayout.createSequentialGroup()
-                        .addGroup(WorkingDirectoryFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(WorkingDirectoryFrameLabel1)
-                            .addComponent(WorkingDirectoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 12, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkingDirectoryFrameLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(WorkingDirectoryFrameSetButton)
-                .addGap(18, 18, 18)
-                .addComponent(WorkingDirectoryFrameCancelButton)
-                .addGap(24, 24, 24))
-        );
-        WorkingDirectoryFrameLayout.setVerticalGroup(
-            WorkingDirectoryFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WorkingDirectoryFrameLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(WorkingDirectoryFrameLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(WorkingDirectoryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(WorkingDirectoryFrameLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(WorkingDirectoryFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(WorkingDirectoryFrameSetButton)
-                    .addComponent(WorkingDirectoryFrameCancelButton))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
+        WorkingDirectoryChooser.setApproveButtonMnemonic(1);
+        WorkingDirectoryChooser.setCurrentDirectory(workingDirectory.toFile());
+        WorkingDirectoryChooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
 
         LogBuilderFrame.setLocationByPlatform(true);
-        LogBuilderFrame.setMaximumSize(new java.awt.Dimension(450, 225));
-        LogBuilderFrame.setMinimumSize(new java.awt.Dimension(450, 225));
-        LogBuilderFrame.setPreferredSize(new java.awt.Dimension(450, 225));
+        LogBuilderFrame.setMinimumSize(new java.awt.Dimension(350, 177));
+        LogBuilderFrame.setResizable(false);
 
-        LogBuilderFrameLabel1.setText("File name");
-
-        FileNameField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                FileNameFieldKeyPressed(evt);
-            }
-        });
-
-        LogBuilderFrameLabel3.setText("Year to build:");
-
-        LogBuilderFrameLabel2.setText(".txt");
+        LogBuilderTxtLabel.setText(".txt");
 
         LogBuilderBuildButton.setText("Build");
         LogBuilderBuildButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -171,11 +93,21 @@ public class MileageUI extends javax.swing.JFrame {
             }
         });
 
-        YearToBuildField.addKeyListener(new java.awt.event.KeyAdapter() {
+        LogBuilderYearField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                YearToBuildFieldKeyPressed(evt);
+                LogBuilderYearFieldKeyPressed(evt);
             }
         });
+
+        LogBuilderNameLabel.setText("File name");
+
+        LogBuilderNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LogBuilderNameFieldKeyPressed(evt);
+            }
+        });
+
+        LogBuilderYearLabel.setText("Year to build:");
 
         javax.swing.GroupLayout LogBuilderFrameLayout = new javax.swing.GroupLayout(LogBuilderFrame.getContentPane());
         LogBuilderFrame.getContentPane().setLayout(LogBuilderFrameLayout);
@@ -185,106 +117,51 @@ public class MileageUI extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
-                        .addComponent(LogBuilderFrameLabel3)
+                        .addComponent(LogBuilderYearLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(YearToBuildField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LogBuilderYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LogBuilderCompleteNotification))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
-                        .addComponent(LogBuilderFrameLabel1)
+                        .addComponent(LogBuilderNameLabel)
                         .addGap(10, 10, 10)
-                        .addComponent(FileNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LogBuilderNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(LogBuilderFrameLabel2))
+                        .addComponent(LogBuilderTxtLabel))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LogBuilderFrameLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(LogBuilderBuildButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LogBuilderCloseButton)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         LogBuilderFrameLayout.setVerticalGroup(
             LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogBuilderFrameLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FileNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LogBuilderNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(LogBuilderFrameLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LogBuilderFrameLabel1)
-                            .addComponent(LogBuilderFrameLabel2))))
+                            .addComponent(LogBuilderNameLabel)
+                            .addComponent(LogBuilderTxtLabel))))
                 .addGap(11, 11, 11)
                 .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LogBuilderFrameLabel3)
-                    .addComponent(YearToBuildField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LogBuilderYearLabel)
+                    .addComponent(LogBuilderYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LogBuilderCompleteNotification))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(LogBuilderFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LogBuilderBuildButton)
                     .addComponent(LogBuilderCloseButton))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        OverwritePopup.setLocationByPlatform(true);
-        OverwritePopup.setMinimumSize(new java.awt.Dimension(230, 150));
-
-        OverwritePopupLabel1.setText("A file with this name already exists.");
-
-        OverwritePopupLabel2.setText("Do you want to overwrite it?");
-
-        OverwriteYes.setText("Yes");
-        OverwriteYes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OverwriteYesActionPerformed(evt);
-            }
-        });
-
-        OverwriteNo.setText("No");
-        OverwriteNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OverwriteNoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout OverwritePopupLayout = new javax.swing.GroupLayout(OverwritePopup.getContentPane());
-        OverwritePopup.getContentPane().setLayout(OverwritePopupLayout);
-        OverwritePopupLayout.setHorizontalGroup(
-            OverwritePopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(OverwritePopupLayout.createSequentialGroup()
-                .addGroup(OverwritePopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OverwritePopupLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(OverwritePopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(OverwritePopupLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(OverwritePopupLabel2))
-                            .addComponent(OverwritePopupLabel1)))
-                    .addGroup(OverwritePopupLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(OverwriteYes)
-                        .addGap(18, 18, 18)
-                        .addComponent(OverwriteNo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        OverwritePopupLayout.setVerticalGroup(
-            OverwritePopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(OverwritePopupLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(OverwritePopupLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OverwritePopupLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(OverwritePopupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OverwriteYes)
-                    .addComponent(OverwriteNo))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GetMileage");
         setLocationByPlatform(true);
-        setMinimumSize(new java.awt.Dimension(331, 252));
+        setMinimumSize(new java.awt.Dimension(392, 298));
         setResizable(false);
 
         FromLabel.setText("From");
@@ -461,51 +338,49 @@ public class MileageUI extends javax.swing.JFrame {
     }//GEN-LAST:event_MainMenuDropdownActionPerformed
 
     private void WorkingDirectoryMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkingDirectoryMenuItemActionPerformed
-        WorkingDirectoryFrame.setVisible(true);
-        WorkingDirectoryTextField.setText(workingDirectory.toString());
+         
+        int returnVal = WorkingDirectoryChooser.showOpenDialog(this);
+
+        if (returnVal == WorkingDirectoryChooser.APPROVE_OPTION) {
+            workingDirectory = WorkingDirectoryChooser.getSelectedFile().toPath();
+            //This is where a real application would open the file.
+            System.out.println("Working directory is " + workingDirectory.toString());
+        } else {
+            System.out.println("Change working directory cancelled.");
+        }
     }//GEN-LAST:event_WorkingDirectoryMenuItemActionPerformed
 
-    private void WorkingDirectoryFrameCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkingDirectoryFrameCancelButtonActionPerformed
-        WorkingDirectoryFrame.setVisible(false);
-        WorkingDirectoryTextField.setBackground(Color.white);
-    }//GEN-LAST:event_WorkingDirectoryFrameCancelButtonActionPerformed
-
-    private void WorkingDirectoryFrameSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorkingDirectoryFrameSetButtonActionPerformed
-        if(Files.exists(Paths.get(WorkingDirectoryTextField.getText())) 
-                && Files.isReadable(Paths.get(WorkingDirectoryTextField.getText()))) {
-            workingDirectory = Paths.get(WorkingDirectoryTextField.getText());
-            System.out.println("New working directory is " + workingDirectory.toString());
-            WorkingDirectoryFrame.setVisible(false);
-        }
-        else {
-            WorkingDirectoryTextField.setBackground(Color.pink);
-            System.out.println("Error: " + WorkingDirectoryTextField.getText() + " doesn't exist or isn't readable");
-        }
-    }//GEN-LAST:event_WorkingDirectoryFrameSetButtonActionPerformed
-
-    private void FileNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FileNameFieldKeyPressed
-
+    private void LogBuilderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderMenuItemActionPerformed
         LogBuilderCompleteNotification.setVisible(false);
-    }//GEN-LAST:event_FileNameFieldKeyPressed
+        LogBuilderFrame.setVisible(true);
+    }//GEN-LAST:event_LogBuilderMenuItemActionPerformed
 
     private void LogBuilderBuildButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderBuildButtonActionPerformed
-
         //check that filename field contains something
-        if (!FileNameField.getText().isEmpty() && !YearToBuildField.getText().isEmpty()) {
+        if (!LogBuilderNameField.getText().isEmpty() && !LogBuilderYearField.getText().isEmpty()) {
             //capture selections/text from other fields in the GUI
-            filename = FileNameField.getText() + ".txt";
-            yearToBuildString = YearToBuildField.getText();
+            filename = LogBuilderNameField.getText() + ".txt";
+            yearToBuildString = LogBuilderYearField.getText();
 
             //check if filename exists, and prompt for overwrite if it does
             newFile = Paths.get(workingDirectory.toString() + File.separator + filename);
             if (Files.exists(newFile))
             {
+                System.out.println("Filename already exists...");
                 // pop-up box to notify and ask for overwrite permission
-                FileNameField.setEnabled(false);
-                YearToBuildField.setEnabled(false);
-                LogBuilderBuildButton.setEnabled(false);
-                OverwritePopup.setVisible(true);
-                //exit this method to wait for next action from pop-up box
+                //wait for next action from pop-up box
+                //if yes, set mustDeleteFile "true" and call instantiateAndBuild
+                int n = JOptionPane.showConfirmDialog(LogBuilderFrame,
+                        newFile.toString() + " already exists.\nOverwrite it?",
+                        "Overwrite it?",
+                        JOptionPane.YES_NO_OPTION);
+                if (n == 0) {
+                    mustDeleteFile = true;
+                    instantiateAndBuild();
+                }
+                else {
+                    //close the JOptionPane
+                }
             }
             else {
                 //instantiate LogBuilder, passing selections/text to its constructor
@@ -514,37 +389,17 @@ public class MileageUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LogBuilderBuildButtonActionPerformed
 
-    private void LogBuilderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderMenuItemActionPerformed
-        LogBuilderCompleteNotification.setVisible(false);
-        LogBuilderFrame.setVisible(true);
-    }//GEN-LAST:event_LogBuilderMenuItemActionPerformed
-
     private void LogBuilderCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogBuilderCloseButtonActionPerformed
         LogBuilderFrame.setVisible(false);
-        FileNameField.setText(null);
-        YearToBuildField.setText(null);
     }//GEN-LAST:event_LogBuilderCloseButtonActionPerformed
 
-    private void OverwriteYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverwriteYesActionPerformed
-        mustDeleteFile = true;
-        OverwritePopup.setVisible(false);
-        FileNameField.setEnabled(true);
-        YearToBuildField.setEnabled(true);
-        LogBuilderBuildButton.setEnabled(true);
-        instantiateAndBuild();
-        mustDeleteFile = false; //set the flag back to the default "false" for the next time
-    }//GEN-LAST:event_OverwriteYesActionPerformed
-
-    private void OverwriteNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OverwriteNoActionPerformed
-        OverwritePopup.setVisible(false);
-        FileNameField.setEnabled(true);
-        YearToBuildField.setEnabled(true);
-        LogBuilderBuildButton.setEnabled(true);
-    }//GEN-LAST:event_OverwriteNoActionPerformed
-
-    private void YearToBuildFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YearToBuildFieldKeyPressed
+    private void LogBuilderYearFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LogBuilderYearFieldKeyPressed
         LogBuilderCompleteNotification.setVisible(false);
-    }//GEN-LAST:event_YearToBuildFieldKeyPressed
+    }//GEN-LAST:event_LogBuilderYearFieldKeyPressed
+
+    private void LogBuilderNameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LogBuilderNameFieldKeyPressed
+        LogBuilderCompleteNotification.setVisible(false);
+    }//GEN-LAST:event_LogBuilderNameFieldKeyPressed
 
     private void updateDisplay() {
         if (FromMonthComboBox.getSelectedItem() != null && ToMonthComboBox.getSelectedItem() != null
@@ -588,6 +443,7 @@ public class MileageUI extends javax.swing.JFrame {
         
         //check for completion and notify the user
         LogBuilderCompleteNotification.setVisible(tempBuilder.wasBuildSuccessful());
+        mustDeleteFile = false;
     }
     
     private class WeeklyMileagePanel extends javax.swing.JPanel {
@@ -650,7 +506,6 @@ public class MileageUI extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ExitMenuItem;
-    private javax.swing.JTextField FileNameField;
     private javax.swing.JComboBox FromDayComboBox;
     private javax.swing.JLabel FromLabel;
     private javax.swing.JComboBox FromMonthComboBox;
@@ -659,30 +514,21 @@ public class MileageUI extends javax.swing.JFrame {
     private javax.swing.JButton LogBuilderCloseButton;
     private javax.swing.JLabel LogBuilderCompleteNotification;
     private javax.swing.JFrame LogBuilderFrame;
-    private javax.swing.JLabel LogBuilderFrameLabel1;
-    private javax.swing.JLabel LogBuilderFrameLabel2;
-    private javax.swing.JLabel LogBuilderFrameLabel3;
     private javax.swing.JMenuItem LogBuilderMenuItem;
+    private javax.swing.JTextField LogBuilderNameField;
+    private javax.swing.JLabel LogBuilderNameLabel;
+    private javax.swing.JLabel LogBuilderTxtLabel;
+    private javax.swing.JTextField LogBuilderYearField;
+    private javax.swing.JLabel LogBuilderYearLabel;
     private javax.swing.JMenuBar MainMenuBar;
     private javax.swing.JMenu MainMenuDropdown;
-    private javax.swing.JButton OverwriteNo;
-    private javax.swing.JDialog OverwritePopup;
-    private javax.swing.JLabel OverwritePopupLabel1;
-    private javax.swing.JLabel OverwritePopupLabel2;
-    private javax.swing.JButton OverwriteYes;
     private javax.swing.JComboBox ToDayComboBox;
     private javax.swing.JLabel ToLabel;
     private javax.swing.JComboBox ToMonthComboBox;
     private javax.swing.JComboBox ToYearComboBox;
     private javax.swing.JLabel TotalMileageLabel;
     private javax.swing.JTextField TotalMileageOutputText;
-    private javax.swing.JFrame WorkingDirectoryFrame;
-    private javax.swing.JButton WorkingDirectoryFrameCancelButton;
-    private javax.swing.JLabel WorkingDirectoryFrameLabel1;
-    private javax.swing.JLabel WorkingDirectoryFrameLabel2;
-    private javax.swing.JButton WorkingDirectoryFrameSetButton;
+    private javax.swing.JFileChooser WorkingDirectoryChooser;
     private javax.swing.JMenuItem WorkingDirectoryMenuItem;
-    private javax.swing.JTextField WorkingDirectoryTextField;
-    private javax.swing.JTextField YearToBuildField;
     // End of variables declaration//GEN-END:variables
 }
