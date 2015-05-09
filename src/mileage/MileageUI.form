@@ -10,6 +10,7 @@
         <Property name="currentDirectory" type="java.io.File" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="workingDirectory.toFile()" type="code"/>
         </Property>
+        <Property name="dialogTitle" type="java.lang.String" value="Choose working directory."/>
         <Property name="fileSelectionMode" type="int" value="1"/>
       </Properties>
     </Component>

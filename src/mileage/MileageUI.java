@@ -27,6 +27,7 @@ public class MileageUI extends javax.swing.JFrame {
         weeklyPanel.setLocation(50, 200);
         weeklyPanel.setSize(270, 30);
         add(weeklyPanel);
+        WorkingDirectoryMenuItem.doClick(1);
     }
     
     /**
@@ -66,6 +67,7 @@ public class MileageUI extends javax.swing.JFrame {
 
         WorkingDirectoryChooser.setApproveButtonMnemonic(1);
         WorkingDirectoryChooser.setCurrentDirectory(workingDirectory.toFile());
+        WorkingDirectoryChooser.setDialogTitle("Choose working directory.");
         WorkingDirectoryChooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
 
         LogBuilderFrame.setLocationByPlatform(true);
@@ -496,12 +498,12 @@ public class MileageUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                workingDirectory = Paths.get("temp").toAbsolutePath().getParent();
                 new MileageUI().setVisible(true);
             }
         });
         
-        workingDirectory = Paths.get("temp").toAbsolutePath().getParent();
-        System.out.println("Working directory is " + workingDirectory.toString());
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
