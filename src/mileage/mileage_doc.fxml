@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"  fx:id="vbox" 
+      fx:controller="mileage.MileageFXController">
+    <MenuBar fx:id="menuBar">
+        <Menu text="File"> 
+            <MenuItem fx:id="menuChooseDirectory" text="Choose working directory" onAction="#chooseWorkingDirectory"/>
+            <MenuItem fx:id="menuBuild" text="Build new log" onAction="#buildNewLog"/>
+            <MenuItem fx:id="menuExit" text="Exit application" onAction="#exitApplication"/>    
+        </Menu>
+    </MenuBar>
+
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <Label fx:id="header" text="Select a date range to get mileage..."                
+           GridPane.columnIndex="0" GridPane.rowIndex="0">
+        </Label>
+        <Label fx:id="fromLabel" text="From:"                
+           GridPane.columnIndex="0" GridPane.rowIndex="1">
+        </Label>
+        <ComboBox fx:id="fromYear" visibleRowCount="13" onAction="#addMileage"               
+              GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="2004" />
+                    <String fx:value="2005" />
+                    <String fx:value="2006" />
+                    <String fx:value="2007" />
+                    <String fx:value="2008" />
+                    <String fx:value="2009" />
+                    <String fx:value="2010" />
+                    <String fx:value="2011" />
+                    <String fx:value="2012" />
+                    <String fx:value="2013" />
+                    <String fx:value="2014" />
+                    <String fx:value="2015" />
+                    <String fx:value="2016" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="fromMonth" visibleRowCount="12" onAction="#addMileage"             
+              GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="January" />
+                    <String fx:value="February" />
+                    <String fx:value="March" />
+                    <String fx:value="April" />
+                    <String fx:value="May" />
+                    <String fx:value="June" />
+                    <String fx:value="July" />
+                    <String fx:value="August" />
+                    <String fx:value="September" />
+                    <String fx:value="October" />
+                    <String fx:value="November" />
+                    <String fx:value="December" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="fromDay" onAction="#addMileage"               
+              GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                    <String fx:value="6" />
+                    <String fx:value="7" />
+                    <String fx:value="8" />
+                    <String fx:value="9" />
+                    <String fx:value="10" />
+                    <String fx:value="11" />
+                    <String fx:value="12" />
+                    <String fx:value="13" />
+                    <String fx:value="14" />
+                    <String fx:value="15" />
+                    <String fx:value="16" />
+                    <String fx:value="17" />
+                    <String fx:value="18" />
+                    <String fx:value="19" />
+                    <String fx:value="20" />
+                    <String fx:value="21" />
+                    <String fx:value="22" />
+                    <String fx:value="23" />
+                    <String fx:value="24" />
+                    <String fx:value="25" />
+                    <String fx:value="26" />
+                    <String fx:value="27" />
+                    <String fx:value="28" />
+                    <String fx:value="29" />
+                    <String fx:value="30" />
+                    <String fx:value="31" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label fx:id="toLabel" text="To:"                
+           GridPane.columnIndex="0" GridPane.rowIndex="2">
+        </Label>
+        <ComboBox fx:id="toYear" visibleRowCount="13" onAction="#addMileage"            
+              GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="2004" />
+                    <String fx:value="2005" />
+                    <String fx:value="2006" />
+                    <String fx:value="2007" />
+                    <String fx:value="2008" />
+                    <String fx:value="2009" />
+                    <String fx:value="2010" />
+                    <String fx:value="2011" />
+                    <String fx:value="2012" />
+                    <String fx:value="2013" />
+                    <String fx:value="2014" />
+                    <String fx:value="2015" />
+                    <String fx:value="2016" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="toMonth" visibleRowCount="12" onAction="#addMileage"          
+              GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="January" />
+                    <String fx:value="February" />
+                    <String fx:value="March" />
+                    <String fx:value="April" />
+                    <String fx:value="May" />
+                    <String fx:value="June" />
+                    <String fx:value="July" />
+                    <String fx:value="August" />
+                    <String fx:value="September" />
+                    <String fx:value="October" />
+                    <String fx:value="November" />
+                    <String fx:value="December" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="toDay" onAction="#addMileage"               
+              GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                    <String fx:value="6" />
+                    <String fx:value="7" />
+                    <String fx:value="8" />
+                    <String fx:value="9" />
+                    <String fx:value="10" />
+                    <String fx:value="11" />
+                    <String fx:value="12" />
+                    <String fx:value="13" />
+                    <String fx:value="14" />
+                    <String fx:value="15" />
+                    <String fx:value="16" />
+                    <String fx:value="17" />
+                    <String fx:value="18" />
+                    <String fx:value="19" />
+                    <String fx:value="20" />
+                    <String fx:value="21" />
+                    <String fx:value="22" />
+                    <String fx:value="23" />
+                    <String fx:value="24" />
+                    <String fx:value="25" />
+                    <String fx:value="26" />
+                    <String fx:value="27" />
+                    <String fx:value="28" />
+                    <String fx:value="29" />
+                    <String fx:value="30" />
+                    <String fx:value="31" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+   
+    </GridPane>
+</VBox>

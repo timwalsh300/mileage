@@ -1,6 +1,7 @@
 /*
- * Instances of this class take a date range from MileageUI class, read the
- * through the log files between the specified dates, and perform the analysis.
+ * Instances of this class take a date range, read the
+ * through the log files between the specified dates, 
+ * and perform the analysis.
  */
 package mileage;
 
@@ -11,6 +12,7 @@ import java.util.regex.*;
 public class MileageAdder {
     
     private String fromDay, toDay;
+    private final String workingDirectory;
     private final String fromMonth, fromYear, toMonth, toYear;
     private double daysInRange = -1, totalMiles = -1;
     private final Pattern datePattern = Pattern.compile("\\d\\d:");
@@ -18,14 +20,17 @@ public class MileageAdder {
     private Pattern previousTokenPattern;
     private final String monthStringSequence = "JanFebMarAprMayJunJulAugSepOctNovDec";
     
-    MileageAdder(String fd, String fm, String fy,
+    MileageAdder(String wd, String fd, String fm, String fy,
             String td, String tm, String ty) {
         
         int temp;
-        
+        workingDirectory = wd;
         fromYear = fy;
         fromMonth = fm.substring(0, 3);
         fromDay = fd;
+        if (fromDay.length() == 1) {
+            fromDay = "0" + fromDay;
+        }
         temp = getMonthDays(fromMonth, fromYear);
         if (Integer.valueOf(fromDay) > temp) { // assume that the user wants to select the final day of the month
             fromDay = Integer.toString(temp); // this will always be two digits, 28-31, so no need to pad it with 0
@@ -34,6 +39,9 @@ public class MileageAdder {
         toYear = ty;
         toMonth = tm.substring(0, 3);
         toDay = td;
+        if (toDay.length() == 1) {
+            toDay = "0" + toDay;
+        }
         temp = getMonthDays(toMonth, toYear);
         if (Integer.valueOf(toDay) > temp) { // assume that the user wants to select the final day of the month
             toDay = Integer.toString(temp); // this will always be two digits, 28-31, so no need to pad it with 0
@@ -70,10 +78,10 @@ public class MileageAdder {
         
         try {
             for (String y: yearsInRange) {
-                s = new Scanner(new BufferedReader(new FileReader(MileageUI.workingDirectory.toString() + 
+                s = new Scanner(new BufferedReader(new FileReader(workingDirectory + 
                         File.separator + y + ".txt")));
                 System.out.println("Opening file: "
-                        + MileageUI.workingDirectory.toString() + File.separator + y + ".txt");
+                        + workingDirectory + File.separator + y + ".txt");
                 while (s.hasNext()) {
                     previousToken = thisToken;
                     thisToken = s.next();
