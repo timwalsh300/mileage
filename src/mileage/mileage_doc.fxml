@@ -12,9 +12,9 @@
       fx:controller="mileage.MileageFXController">
     <MenuBar fx:id="menuBar">
         <Menu text="File"> 
-            <MenuItem fx:id="menuChooseDirectory" text="Choose working directory" onAction="#chooseWorkingDirectory"/>
-            <MenuItem fx:id="menuBuild" text="Build new log" onAction="#buildNewLog"/>
-            <MenuItem fx:id="menuExit" text="Exit application" onAction="#exitApplication"/>    
+            <MenuItem fx:id="chooseDirectoryMenuItem" text="Choose working directory" onAction="#chooseWorkingDirectory"/>
+            <MenuItem fx:id="buildMenuItem" text="Build new log" onAction="#openLogBuilder"/>
+            <MenuItem fx:id="exitMenuItem" text="Exit application" onAction="#exitApplication"/>    
         </Menu>
     </MenuBar>
 
