@@ -18,6 +18,7 @@ import java.nio.file.Path;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -53,13 +54,18 @@ public class MileageFXController implements Initializable {
     private Button yesButton;
     @FXML
     private Button noButton;
-
-    private Path workingDirectory = Paths.get("temp").toAbsolutePath().getParent();
+    private DirectoryChooser directoryChooser;
+    private Path workingDirectory;
     private Path newFile;
 
     @FXML
     private void chooseWorkingDirectory(ActionEvent event) {
-        System.out.println("Launching file (directory) chooser.");
+        System.out.println("Launching directory chooser.");
+        File temp = directoryChooser.showDialog(header.getScene().getWindow());
+        if (temp != null) {
+            workingDirectory = Paths.get(temp.getAbsolutePath());
+        }
+        System.out.println("Working directory is now " + workingDirectory.toString());
     }
 
     @FXML
@@ -169,7 +175,7 @@ public class MileageFXController implements Initializable {
 
             try {
                 MileageAdder adder = new MileageAdder(
-                        Paths.get("temp").toAbsolutePath().getParent().toString(),
+                        workingDirectory.toString(),
                         fromDay.getValue().toString(),
                         fromMonth.getValue().toString(),
                         fromYear.getValue().toString(),
@@ -194,7 +200,10 @@ public class MileageFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        workingDirectory = Paths.get("temp").toAbsolutePath().getParent();
+        directoryChooser = new DirectoryChooser();
+        directoryChooser.setInitialDirectory(workingDirectory.toFile());
+        directoryChooser.setTitle("Choose your working directory.");
     }
 
 }
