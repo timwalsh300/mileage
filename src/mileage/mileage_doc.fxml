@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.collections.*?>
+<?import javafx.scene.canvas.*?>
+
 
 <VBox xmlns:fx="http://javafx.com/fxml/1"  fx:id="vbox" 
       fx:controller="mileage.MileageFXController">
@@ -185,6 +187,6 @@
                 </FXCollections>
             </items>
         </ComboBox>
-   
     </GridPane>
+    <Canvas fx:id="drawArea" height="100" width="600" />
 </VBox>

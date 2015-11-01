@@ -18,6 +18,9 @@ import java.nio.file.Path;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -54,9 +57,13 @@ public class MileageFXController implements Initializable {
     private Button yesButton;
     @FXML
     private Button noButton;
+    @FXML
+    private Canvas drawArea;
+
     private DirectoryChooser directoryChooser;
     private Path workingDirectory;
     private Path newFile;
+    private GraphicsContext gc;
 
     @FXML
     private void chooseWorkingDirectory(ActionEvent event) {
@@ -169,6 +176,7 @@ public class MileageFXController implements Initializable {
     @FXML
     private void addMileage(ActionEvent event) {
         System.out.println("Preparing to add.");
+        gc.clearRect(0, 0, 600, 100);
         if (fromYear.getValue() != null && toMonth.getValue() != null
                 && fromYear.getValue() != null && toYear.getValue() != null
                 && fromDay.getValue() != null && toDay.getValue() != null) {
@@ -185,12 +193,34 @@ public class MileageFXController implements Initializable {
                 );
                 System.out.println("Total mileage is " + adder.getTotalMileage());
                 System.out.println("Weekly mileage is " + adder.getWeeklyMileage());
+                
+                //gc.setFill(Color.BLUE);
+                //gc.fillRect(10, 10, 580, 50);
+                if (adder.getWeeklyMileage() > 20) {
+                    gc.setFill(Color.BLUE);
+                }
+                else if (adder.getWeeklyMileage() > 15) {
+                    gc.setFill(Color.GREEN);
+                    
+                }
+                else if (adder.getWeeklyMileage() > 10) {
+                    gc.setFill(Color.YELLOW);
+                    
+                }
+                else if (adder.getWeeklyMileage() > 5) {
+                    gc.setFill(Color.ORANGE);
+                    
+                }
+                else {
+                    gc.setFill(Color.RED);  
+                }
+                gc.fillRect(10, 10, (adder.getWeeklyMileage() * 580) / 25, 25);
+                gc.setFill(Color.BLACK);
+                gc.fillText("Average weekly mileage was " + (int)adder.getWeeklyMileage() + " miles.", 30, 60);
+                gc.fillText("Total mileage was " + (int)adder.getTotalMileage() + " miles.", 30, 80);
 
-            } catch (InvalidDateRangeException e1) {
-                System.out.println(e1.getMessage());
-
-            } catch (IOException e2) {
-                System.out.println(e2.getMessage());
+            } catch (InvalidDateRangeException | IOException e) {
+                System.out.println(e.getMessage());
 
             } finally {
 
@@ -204,6 +234,7 @@ public class MileageFXController implements Initializable {
         directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(workingDirectory.toFile());
         directoryChooser.setTitle("Choose your working directory.");
+        gc = drawArea.getGraphicsContext2D();
     }
 
 }
