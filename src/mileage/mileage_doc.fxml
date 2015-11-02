@@ -10,28 +10,31 @@
 <?import javafx.scene.canvas.*?>
 
 
-<VBox xmlns:fx="http://javafx.com/fxml/1"  fx:id="vbox" 
+<VBox xmlns:fx="http://javafx.com/fxml/1"  fx:id="vbox"
       fx:controller="mileage.MileageFXController">
     <MenuBar fx:id="menuBar">
-        <Menu text="File"> 
+        <Menu fx:id="menuFile" text="File"> 
             <MenuItem fx:id="chooseDirectoryMenuItem" text="Choose working directory" onAction="#chooseWorkingDirectory"/>
             <MenuItem fx:id="buildMenuItem" text="Build new log" onAction="#openLogBuilder"/>
             <MenuItem fx:id="exitMenuItem" text="Exit application" onAction="#exitApplication"/>    
         </Menu>
     </MenuBar>
-
+    <HBox>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <Label alignment="CENTER" fx:id="header" text="Select a date range to get mileage..."/>
+    </HBox>
     <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
         <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
-        <Label fx:id="header" text="Select a date range to get mileage..."                
-           GridPane.columnIndex="0" GridPane.rowIndex="0">
-        </Label>
-        <Label fx:id="fromLabel" text="From:"                
-           GridPane.columnIndex="0" GridPane.rowIndex="1">
-        </Label>
+        
+        <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <Label fx:id="fromLabel" text="From:"/>
+        </HBox>
         <ComboBox fx:id="fromYear" visibleRowCount="13" onAction="#addMileage"               
-              GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  GridPane.columnIndex="1" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="2004" />
@@ -51,7 +54,7 @@
             </items>
         </ComboBox>
         <ComboBox fx:id="fromMonth" visibleRowCount="12" onAction="#addMileage"             
-              GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  GridPane.columnIndex="2" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="January" />
@@ -70,7 +73,7 @@
             </items>
         </ComboBox>
         <ComboBox fx:id="fromDay" onAction="#addMileage"               
-              GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  GridPane.columnIndex="3" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="1" />
@@ -107,11 +110,11 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <Label fx:id="toLabel" text="To:"                
-           GridPane.columnIndex="0" GridPane.rowIndex="2">
-        </Label>
+        <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <Label fx:id="toLabel" text="To:"/>
+        </HBox>
         <ComboBox fx:id="toYear" visibleRowCount="13" onAction="#addMileage"            
-              GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  GridPane.columnIndex="1" GridPane.rowIndex="2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="2004" />
@@ -131,7 +134,7 @@
             </items>
         </ComboBox>
         <ComboBox fx:id="toMonth" visibleRowCount="12" onAction="#addMileage"          
-              GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  GridPane.columnIndex="2" GridPane.rowIndex="2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="January" />
@@ -150,7 +153,7 @@
             </items>
         </ComboBox>
         <ComboBox fx:id="toDay" onAction="#addMileage"               
-              GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  GridPane.columnIndex="3" GridPane.rowIndex="2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="1" />

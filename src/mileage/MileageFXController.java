@@ -82,7 +82,9 @@ public class MileageFXController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("logbuilder_doc.fxml"));
         loader.setController(this);
         Parent root = loader.load();
-        logBuilderStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("mileagefxcss.css").toExternalForm());
+        logBuilderStage.setScene(scene);
         logBuilderStage.setTitle("Log Builder");
         logBuilderStage.initModality(Modality.APPLICATION_MODAL);
         logBuilderStage.initOwner(header.getScene().getWindow());
@@ -122,7 +124,9 @@ public class MileageFXController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("overwrite_doc.fxml"));
                 loader.setController(this);
                 Parent root = loader.load();
-                confirmOverwriteStage.setScene(new Scene(root));
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("mileagefxcss.css").toExternalForm());
+                confirmOverwriteStage.setScene(scene);
                 confirmOverwriteStage.setTitle("Confirm Overwrite");
                 confirmOverwriteStage.initModality(Modality.APPLICATION_MODAL);
                 confirmOverwriteStage.initOwner(closeButton.getScene().getWindow());
@@ -215,7 +219,7 @@ public class MileageFXController implements Initializable {
                     gc.setFill(Color.RED);  
                 }
                 gc.fillRect(10, 10, (adder.getWeeklyMileage() * 580) / 25, 25);
-                gc.setFill(Color.BLACK);
+                gc.setFill(Color.WHITESMOKE);
                 gc.fillText("Average weekly mileage was " + (int)adder.getWeeklyMileage() + " miles.", 30, 60);
                 gc.fillText("Total mileage was " + (int)adder.getTotalMileage() + " miles.", 30, 80);
 

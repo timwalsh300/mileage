@@ -22,6 +22,7 @@ public class MileageFX extends Application {
         stage.setTitle("Mileage");
         Parent parent = (Parent) FXMLLoader.load(getClass().getResource("mileage_doc.fxml"));
         Scene scene = new Scene(parent);
+        scene.getStylesheets().add(getClass().getResource("mileagefxcss.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
