@@ -68,11 +68,18 @@ public class MileageFXController implements Initializable {
     @FXML
     private void chooseWorkingDirectory(ActionEvent event) {
         System.out.println("Launching directory chooser.");
+        directoryChooser = new DirectoryChooser();
+        if (workingDirectory != null) {
+            directoryChooser.setInitialDirectory(workingDirectory.toFile());
+        }
+        directoryChooser.setTitle("Choose your working directory.");
         File temp = directoryChooser.showDialog(header.getScene().getWindow());
         if (temp != null) {
             workingDirectory = Paths.get(temp.getAbsolutePath());
+            System.out.println("Working directory is now " + workingDirectory.toString());
+        } else {
+            System.out.println("Failed to select directory.");
         }
-        System.out.println("Working directory is now " + workingDirectory.toString());
     }
 
     @FXML
@@ -116,6 +123,7 @@ public class MileageFXController implements Initializable {
 
             //check if filename exists, and prompt for overwrite if it does
             newFile = Paths.get(workingDirectory.toString() + File.separator + filenameString);
+            System.out.println("Checking if " + newFile.toString() + " exists...");
             if (Files.exists(newFile)) {
                 System.out.println("File named " + filenameString + " already exists in the current working directory.");
                 // pop-up box to notify and ask for overwrite permission
@@ -198,8 +206,6 @@ public class MileageFXController implements Initializable {
                 System.out.println("Total mileage is " + adder.getTotalMileage());
                 System.out.println("Weekly mileage is " + adder.getWeeklyMileage());
                 
-                //gc.setFill(Color.BLUE);
-                //gc.fillRect(10, 10, 580, 50);
                 if (adder.getWeeklyMileage() > 20) {
                     gc.setFill(Color.BLUE);
                 }
@@ -234,10 +240,6 @@ public class MileageFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        workingDirectory = Paths.get("temp").toAbsolutePath().getParent();
-        directoryChooser = new DirectoryChooser();
-        directoryChooser.setInitialDirectory(workingDirectory.toFile());
-        directoryChooser.setTitle("Choose your working directory.");
         gc = drawArea.getGraphicsContext2D();
     }
 
