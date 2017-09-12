@@ -50,6 +50,10 @@
                     <String fx:value="2014" />
                     <String fx:value="2015" />
                     <String fx:value="2016" />
+                    <String fx:value="2017" />
+                    <String fx:value="2018" />
+                    <String fx:value="2019" />
+                    <String fx:value="2020" />
                 </FXCollections>
             </items>
         </ComboBox>
@@ -130,6 +134,10 @@
                     <String fx:value="2014" />
                     <String fx:value="2015" />
                     <String fx:value="2016" />
+                    <String fx:value="2017" />
+                    <String fx:value="2018" />
+                    <String fx:value="2019" />
+                    <String fx:value="2020" />
                 </FXCollections>
             </items>
         </ComboBox>
