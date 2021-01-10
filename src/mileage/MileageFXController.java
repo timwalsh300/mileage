@@ -61,7 +61,6 @@ public class MileageFXController implements Initializable {
     private Canvas drawArea;
 
     private DirectoryChooser directoryChooser;
-    private Path workingDirectory;
     private Path newFile;
     private GraphicsContext gc;
 
@@ -69,14 +68,14 @@ public class MileageFXController implements Initializable {
     private void chooseWorkingDirectory(ActionEvent event) {
         System.out.println("Launching directory chooser.");
         directoryChooser = new DirectoryChooser();
-        if (workingDirectory != null) {
-            directoryChooser.setInitialDirectory(workingDirectory.toFile());
+        if (MileageFX.workingDirectory != null) {
+            directoryChooser.setInitialDirectory(MileageFX.workingDirectory.toFile());
         }
         directoryChooser.setTitle("Choose your working directory.");
         File temp = directoryChooser.showDialog(header.getScene().getWindow());
         if (temp != null) {
-            workingDirectory = Paths.get(temp.getAbsolutePath());
-            System.out.println("Working directory is now " + workingDirectory.toString());
+            MileageFX.workingDirectory = Paths.get(temp.getAbsolutePath());
+            System.out.println("Working directory is now " + MileageFX.workingDirectory.toString());
         } else {
             System.out.println("Failed to select directory.");
         }
@@ -122,7 +121,7 @@ public class MileageFXController implements Initializable {
             String filenameString = fileNameField.getText() + ".txt";
 
             //check if filename exists, and prompt for overwrite if it does
-            newFile = Paths.get(workingDirectory.toString() + File.separator + filenameString);
+            newFile = Paths.get(MileageFX.workingDirectory.toString() + File.separator + filenameString);
             System.out.println("Checking if " + newFile.toString() + " exists...");
             if (Files.exists(newFile)) {
                 System.out.println("File named " + filenameString + " already exists in the current working directory.");
@@ -195,7 +194,7 @@ public class MileageFXController implements Initializable {
 
             try {
                 MileageAdder adder = new MileageAdder(
-                        workingDirectory.toString(),
+                        MileageFX.workingDirectory.toString(),
                         fromDay.getValue().toString(),
                         fromMonth.getValue().toString(),
                         fromYear.getValue().toString(),

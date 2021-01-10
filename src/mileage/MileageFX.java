@@ -11,13 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
  * @author timwalsh300
  */
 public class MileageFX extends Application {
-    
+
+    public static Path workingDirectory;
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Mileage");
@@ -32,6 +37,7 @@ public class MileageFX extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        workingDirectory = Paths.get(System.getProperty("user.dir"));
         launch(args);
     }
 

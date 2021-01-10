@@ -33,27 +33,28 @@
         <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <Label fx:id="fromLabel" text="From:"/>
         </HBox>
-        <ComboBox fx:id="fromYear" visibleRowCount="13" onAction="#addMileage"               
+        <ComboBox fx:id="fromYear" visibleRowCount="10" onAction="#addMileage"               
                   GridPane.columnIndex="1" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="2004" />
-                    <String fx:value="2005" />
-                    <String fx:value="2006" />
-                    <String fx:value="2007" />
-                    <String fx:value="2008" />
-                    <String fx:value="2009" />
-                    <String fx:value="2010" />
-                    <String fx:value="2011" />
-                    <String fx:value="2012" />
-                    <String fx:value="2013" />
-                    <String fx:value="2014" />
-                    <String fx:value="2015" />
-                    <String fx:value="2016" />
-                    <String fx:value="2017" />
-                    <String fx:value="2018" />
-                    <String fx:value="2019" />
+                    <String fx:value="2022" />
+                    <String fx:value="2021" />
                     <String fx:value="2020" />
+                    <String fx:value="2019" />
+                    <String fx:value="2018" />
+                    <String fx:value="2017" />
+                    <String fx:value="2016" />
+                    <String fx:value="2015" />
+                    <String fx:value="2014" />
+                    <String fx:value="2013" />
+                    <String fx:value="2012" />
+                    <String fx:value="2011" />
+                    <String fx:value="2010" />
+                    <String fx:value="2009" />
+                    <String fx:value="2008" />
+                    <String fx:value="2007" />
+                    <String fx:value="2006" />
+                    <String fx:value="2005" />
                 </FXCollections>
             </items>
         </ComboBox>
@@ -117,27 +118,28 @@
         <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="2">
             <Label fx:id="toLabel" text="To:"/>
         </HBox>
-        <ComboBox fx:id="toYear" visibleRowCount="13" onAction="#addMileage"            
+        <ComboBox fx:id="toYear" visibleRowCount="10" onAction="#addMileage"            
                   GridPane.columnIndex="1" GridPane.rowIndex="2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="2004" />
-                    <String fx:value="2005" />
-                    <String fx:value="2006" />
-                    <String fx:value="2007" />
-                    <String fx:value="2008" />
-                    <String fx:value="2009" />
-                    <String fx:value="2010" />
-                    <String fx:value="2011" />
-                    <String fx:value="2012" />
-                    <String fx:value="2013" />
-                    <String fx:value="2014" />
-                    <String fx:value="2015" />
-                    <String fx:value="2016" />
-                    <String fx:value="2017" />
-                    <String fx:value="2018" />
-                    <String fx:value="2019" />
+                    <String fx:value="2022" />
+                    <String fx:value="2021" />
                     <String fx:value="2020" />
+                    <String fx:value="2019" />
+                    <String fx:value="2018" />
+                    <String fx:value="2017" />
+                    <String fx:value="2016" />
+                    <String fx:value="2015" />
+                    <String fx:value="2014" />
+                    <String fx:value="2013" />
+                    <String fx:value="2012" />
+                    <String fx:value="2011" />
+                    <String fx:value="2010" />
+                    <String fx:value="2009" />
+                    <String fx:value="2008" />
+                    <String fx:value="2007" />
+                    <String fx:value="2006" />
+                    <String fx:value="2005" />
                 </FXCollections>
             </items>
         </ComboBox>
