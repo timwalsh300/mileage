@@ -106,7 +106,7 @@ Apr 01: 4 miles
 Apr 02: 4 miles (speed play)
 
 Apr 03: 4 miles (speed play), benchpress (10x135), pullups
-Apr 04: ruck march (8-mile, 2:00, 35 lbs)
+Apr 04: ruck march (8 miles, 2:00, 35 lbs)
 Apr 05: deadlift (265), pullups, 45 pushups
 Apr 06: 2 miles (14:00), pushups, pullups, abs
 Apr 07: 5 miles
@@ -126,7 +126,7 @@ Apr 18: ----
 Apr 19: 3 miles (8 mph)
 Apr 20: ----
 Apr 21: 4 miles
-Apr 22: 3 miles (12:52 3200), 60 pushups, 50 situps
+Apr 22: 3 miles (12:52 2mi), 60 pushups, 50 situps
 Apr 23: 6 miles
 
 Apr 24: 1 mile
@@ -138,7 +138,7 @@ Apr 29: ----
 Apr 30: squats (3x3x165), benchpress (10x135)
 
 May 01: ----
-May 02: ruck march (12 mile, 35 lb, 3:20)
+May 02: ruck march (12 miles, 35 lb, 3:20)
 May 03: ----
 May 04: ----
 May 05: ----

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox  xmlns:fx="http://javafx.com/fxml/1"  fx:id="vbox3">
+    
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <Label fx:id="overwriteLabel1" text="This filename already exists."                
+               GridPane.columnIndex="0" GridPane.rowIndex="0">
+        </Label>
+        <Label fx:id="overwriteLabel2" text="Do you want to overwrite it?"                
+               GridPane.columnIndex="0" GridPane.rowIndex="1">
+        </Label>
+    </GridPane>   
+    <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding> 
+        <Button fx:id="noButton" text="NO" onAction="#overwriteAction" 
+                GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Button fx:id="yesButton" text="YES" onAction="#overwriteAction" 
+                GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+    </GridPane>    
+    
+</VBox>
