@@ -12,7 +12,7 @@ and open the template in the editor.
     -fx-font-size: 10pt;
     -fx-font-weight: bolder;
     -fx-font-family: "monospace";
-    -fx-background-image: url("pavement.jpg");
+    -fx-background-color: #273746;
 }
 
 .label{
